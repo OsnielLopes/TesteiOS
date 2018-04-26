@@ -34,7 +34,10 @@ class ContatoInteractor: ContatoInteractorInput, ContatoDataStore
         var response: ContatoResponse!
         switch request {
         case .form:
-            response = .form(worker.getTheForm())
+//            worker.getTheForm(completionHandler: { (cells) in
+//                self.output.present(response: ContatoResponse.form(cells))
+//            })
+            response = ContatoResponse.form(worker.getTheForm())
         }
         output.present(response: response)
     }

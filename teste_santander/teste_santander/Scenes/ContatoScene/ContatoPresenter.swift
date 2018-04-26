@@ -24,7 +24,11 @@ class ContatoPresenter: ContatoPresenterInput
     
     func present(response: ContatoResponse)
     {
-        let viewModel = ContatoViewModel()
+        var viewModel: ContatoViewModel!
+        switch response {
+        case .form(let cells):
+            viewModel = ContatoViewModel.form(cells)
+        }
         output.display(viewModel: viewModel)
     }
 }

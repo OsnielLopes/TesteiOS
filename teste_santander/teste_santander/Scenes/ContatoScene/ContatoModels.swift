@@ -17,7 +17,8 @@ enum ContatoResponse {
 }
 
 
-struct ContatoViewModel {
+enum ContatoViewModel {
+    case form([Cell])
 }
 
 struct Cell: Decodable {
@@ -34,7 +35,6 @@ struct Cell: Decodable {
 enum Type: Int, Decodable {
     case field = 1, text, image, checkbox, send
 }
-
 
 enum TypeField: Int, Decodable {
     case text = 1, telNumber, email

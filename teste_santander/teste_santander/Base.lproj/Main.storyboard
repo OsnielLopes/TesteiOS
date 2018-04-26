@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,33 +40,20 @@
             <point key="canvasLocation" x="177" y="-793"/>
         </scene>
         <!--Contato-->
-        <scene sceneID="eNw-Fi-nOO">
+        <scene sceneID="gX6-pp-f2Y">
             <objects>
-                <tableViewController id="R7U-d1-0Xw" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0oR-n9-wfp">
+                <viewController id="1hC-Qg-YcG" customClass="ContatoViewController" customModule="teste_santander" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SoM-HD-74z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fSG-v8-Zpz">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fSG-v8-Zpz" id="vMu-pi-agh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="R7U-d1-0Xw" id="bCV-4B-e1w"/>
-                            <outlet property="delegate" destination="R7U-d1-0Xw" id="Xc4-kv-hio"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Contato" id="zkW-8P-XeE"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pjZ-eD-LZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <viewLayoutGuide key="safeArea" id="LDf-C7-9Ar"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Contato" id="92f-zw-6oz" customClass="Contato"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLt-f4-GAE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="178" y="23"/>
+            <point key="canvasLocation" x="204" y="62"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V2y-44-ekc">
@@ -80,7 +68,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="UDu-SV-PqF" kind="relationship" relationship="viewControllers" id="YXa-3S-Hjq"/>
-                        <segue destination="R7U-d1-0Xw" kind="relationship" relationship="viewControllers" id="wE5-tS-VJ8"/>
+                        <segue destination="1hC-Qg-YcG" kind="relationship" relationship="viewControllers" id="HHH-Xe-1eN"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpi-2O-Pba" userLabel="First Responder" sceneMemberID="firstResponder"/>

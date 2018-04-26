@@ -16,7 +16,7 @@ protocol ContatoViewControllerOutput {
     func perform(request: ContatoRequest)
 }
 
-class ContatoViewController: UITableViewController, ContatoViewControllerInput
+class ContatoViewController: UIViewController, ContatoViewControllerInput
 {
     
     var output: ContatoViewControllerOutput!
@@ -44,6 +44,7 @@ class ContatoViewController: UITableViewController, ContatoViewControllerInput
         requestForm()
     }
     
+    
     // MARK: Do something
     
     //@IBOutlet weak var nameTextField: UITextField!
@@ -56,6 +57,82 @@ class ContatoViewController: UITableViewController, ContatoViewControllerInput
     
     func display(viewModel: ContatoViewModel)
     {
-        //nameTextField.text = viewModel.name
+        switch viewModel {
+        case .form(let cells):
+            for cell in cells {
+                let view = FieldFactory.createField(from: cell, view: self.view)
+                self.view.addSubview(view)
+            }
+            
+        }
+    }
+}
+
+extension UILabel {
+    convenience init(cell: Cell, superviewFrame: CGRect){
+        let rect = CGRect(x: 0, y: 0, width: superviewFrame.width*0.77, height: 18)
+        self.init(frame: rect)
+        self.text = cell.message
+    }
+}
+
+extension UITextField {
+    convenience init(cell: Cell) {
+        self.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+}
+
+class ImageField: UIImageView {
+    init(cell: Cell){
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+class Checkbox: UIButton {
+    init(cell: Cell){
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+class SendButton: UIButton {
+    init(cell: Cell) {
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+// Field Factory
+protocol Field {
+    static func createField(from cell: Cell, view: UIView) -> UIView
+}
+
+class FieldFactory: Field {
+    static func createField(from cell: Cell, view: UIView) -> UIView {
+        switch cell.type {
+        case .text:
+            let textLabel = UILabel(cell: cell, superviewFrame: view.frame)
+            let rigthConstraint = NSLayoutConstraint(item: textLabel, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 20)
+            textLabel.addConstraint(rigthConstraint)
+            return textLabel
+        case .field:
+            return UITextField(cell: cell)
+        case .image:
+            return ImageField(cell: cell)
+        case .checkbox:
+            return Checkbox(cell: cell)
+        case .send:
+            return SendButton(cell: cell)
+        }
     }
 }
